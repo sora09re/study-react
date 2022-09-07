@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export function Headline(props) {
@@ -8,8 +7,7 @@ export function Headline(props) {
       <h1 className={styles.title}>{props.page} Page</h1>
 
       <p className={styles.description}>
-        Get started by editing{" "}
-        <code className={styles.code}>pages/{props.page}.js</code>
+        Get started by editing {props.children}
       </p>
     </div>
   );
