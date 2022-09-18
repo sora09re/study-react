@@ -8,18 +8,15 @@ export const useInputArray = () => {
     setText(e.target.value);
   }, []);
 
-  const handleAdd = useCallback(
-    (e) => {
-      setArray((prevArray) => {
-        if (prevArray.some((item) => item === text)) {
-          alert("同じ要素がすでに存在します。");
-          return prevArray;
-        }
-        return [...prevArray, text];
-      });
-    },
-    [text]
-  );
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if (prevArray.includes(text)) {
+        alert("同じ要素がすでに存在します。");
+        return prevArray;
+      }
+      return [...prevArray, text];
+    });
+  }, [text]);
 
   return { text, array, handleChange, handleAdd };
 };
