@@ -1,17 +1,13 @@
-import Head from "next/head";
-import styles from "src/styles/Home.module.css";
-import { Header } from "src/components/Header";
-import { Posts } from "src/components/Posts";
 import { useCallback, useEffect, useState } from "react";
 
-const Home = (props) => {
+export const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const getPosts = useCallback(async () => {
     try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/postsfda");
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
       if (!res.ok) {
         throw new Error("エラーが発生したため、データの取得に失敗しました。");
       }
@@ -27,14 +23,22 @@ const Home = (props) => {
     getPosts();
   }, [getPosts]);
 
+  if (loading) {
+    <div>ローディング中</div>;
+  }
+  if (error) {
+    <div>{error.message}</div>;
+  }
+  if (posts.length === 0) {
+    <div>データは空です</div>;
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Index Page</title>
-      </Head>
-      <Header />
-      <Posts />
-    </div>
+    <ol>
+      {posts.map((post) => {
+        return <li key={post.id}>{post.title}</li>;
+      })}
+    </ol>
   );
 };
-export default Home;
+export default Posts;
