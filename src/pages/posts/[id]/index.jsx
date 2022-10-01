@@ -4,12 +4,9 @@ import { Header } from "src/components/Header";
 import { usePost } from "src/hooks/usePost";
 import { Post } from "src/components/Post";
 
-const PostId = () => {
-  const { post, user, error, isLoading } = usePost();
-
+const PostsId = () => {
   return (
     <div className={styles.container}>
-      
       <Header />
       <Post />
     </div>
