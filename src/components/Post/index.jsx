@@ -5,7 +5,8 @@ import { UserByUserId } from "src/components/User/UserByUserId";
 import { usePost } from "src/hooks/usePost";
 
 export const Post = () => {
-  const { data, error, isLoading } = usePost();
+  const router = useRouter();
+  const { data, error, isLoading } = usePost(router.query.id);
 
   if (isLoading) {
     return <div>ローディング中</div>;
