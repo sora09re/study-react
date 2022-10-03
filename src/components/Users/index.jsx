@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useUsers } from "src/hooks/useUsers";
+import { useUsers } from "src/hooks/useFetchArray";
 
 export const Users = () => {
   const { data, error, isLoading, isEmpty } = useUsers();
@@ -20,7 +20,9 @@ export const Users = () => {
         return (
           <li key={user.id}>
             <Link href={`/users/${user.id}`}>
-              <a>{user.name} ({user.email})</a>
+              <a>
+                {user.name} ({user.email})
+              </a>
             </Link>
           </li>
         );
