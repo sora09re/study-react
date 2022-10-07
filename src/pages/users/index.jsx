@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Header } from "src/components/Header";
 import { Users as UsersComponent } from "src/components/Users";
+import { resolve } from "styled-jsx/css";
 import { SWRConfig } from "swr";
 
 export const getServerSideProps = async () => {
